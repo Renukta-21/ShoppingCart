@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { CartRemoveIcon } from '../assets/svg'
+import { CartRemoveIcon , CartAddIcon} from '../assets/svg'
 import { ShoppingCart } from '../context/ShoppinCart'
 
 function ProductList() {
-  const { filters, products } = useContext(ShoppingCart)
+  const { filters, products, addToCart } = useContext(ShoppingCart)
 
   const filteredProducts = products.filter((p) => {
     return (
@@ -14,7 +14,6 @@ function ProductList() {
 
   return (
     <>
-      
       <div className="productsContainer">
         {filteredProducts.slice(0, 20).map((p) => (
           <div className="product" key={p.id}>
@@ -24,7 +23,7 @@ function ProductList() {
                 {p.title} <strong>{p.price}</strong>{' '}
               </p>
               <strong>{p.category}</strong>
-              <button>
+              <button onClick={()=> addToCart(p)}>
                 <CartRemoveIcon />
               </button>
             </div>
