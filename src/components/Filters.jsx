@@ -16,11 +16,12 @@ function Filters({products}) {
     return (
         <div>
             <input type="range" name="" id="" min={0} max={1500} onChange={(e) => console.log(e.target.value)} />
-            <select name="" id="" value={value || 'default'} onChange={(e)=> console.log(e.target.value)}>
-                <option value="default">Select an option</option>
-                {getCategories().map(c=>(
-                    <option value={c}>{c}</option>
+            <select name="" id="" defaultValue={value||'default'} onChange={(e)=> console.log(e.target.value)}>
+                <option value='default' disabled>Select an option</option>
+                {getCategories().map((c,idx)=>(
+                    <option key={idx} value={c}>{c}</option>
                 ))}
+
             </select>
         </div>
     )

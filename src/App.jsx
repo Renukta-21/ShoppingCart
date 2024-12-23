@@ -1,4 +1,3 @@
-import React from 'react'
 import { products } from './mocks/products.json'
 import './app.css'
 import { CartRemoveIcon } from './assets/svg'
@@ -19,6 +18,7 @@ function App() {
               <img src={p.images[0]} alt="" />
               <div>
                 <p>{p.title} <strong>{p.price}</strong> </p>
+                <strong>{p.category}</strong>
                 <button onClick={handleClick}><CartRemoveIcon /></button>
               </div>
             </div>
