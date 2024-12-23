@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 function Filters({products}) {
     const [value, setValue] = useState('default')
+    
     const getCategories = () => {
         const names = {}
         products.forEach(p=>{
@@ -11,12 +12,11 @@ function Filters({products}) {
         })
         return Object.keys(names)
     }
-    console.log(getCategories())
 
     return (
         <div>
             <input type="range" name="" id="" min={0} max={1500} onChange={(e) => console.log(e.target.value)} />
-            <select name="" id="" defaultValue={value||'default'} onChange={(e)=> console.log(e.target.value)}>
+            <select name="" id="" defaultValue={value||'default'} onChange={(e)=> setValue(e.target.value)}>
                 <option value='default' disabled>Select an option</option>
                 {getCategories().map((c,idx)=>(
                     <option key={idx} value={c}>{c}</option>

@@ -2,11 +2,21 @@ import { products } from './mocks/products.json'
 import './app.css'
 import { CartRemoveIcon } from './assets/svg'
 import Filters from './components/Filters'
+import { useState } from 'react'
+import Debugger from './components/Debugger'
 
 function App() {
+  const [filters, setFilters] = useState({
+    minPrice:0,
+    category:'all'
+  })
   const handleClick = () => {
 
   }
+
+  const filteredProducts = products.filter(p=>{})
+
+  
   return (
     <div>
       <Filters products={products}/>
@@ -24,6 +34,7 @@ function App() {
             </div>
           ))}
         </div>
+        <Debugger/>
       </div>
     </div>
   )
