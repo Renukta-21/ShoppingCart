@@ -1,15 +1,13 @@
 import { products } from './mocks/products.json'
 import './app.css'
 import Filters from './components/Filters'
-import { useState } from 'react'
 import Debugger from './components/Debugger'
 import ProductList from './components/ProductList'
+import { useContext } from 'react'
+import { ShoppingCart } from './context/ShoppinCart'
 
 function App() {
-  const [filters, setFilters] = useState({
-    maxPrice:0,
-    category:'all'
-  })
+  const {filters, setFilters} = useContext(ShoppingCart)
 
   const filteredProducts = products.filter(p=>{
     return p.price >= filters.maxPrice && 
