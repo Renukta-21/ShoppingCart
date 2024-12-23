@@ -11,9 +11,9 @@ function Filters({products, setFilters}) {
 
     return (
         <div>
-            <input type="range" name="" id="" min={0} max={1500} onChange={(e) => setFilters(prevFilters=> ({...prevFilters, minPrice:e.target.value}) )} />
-            <select name="" id="" defaultValue={'default'} onChange={(e)=> setFilters(prevFilters=> ({...prevFilters, category:e.target.value}))}>
-                <option value='default' disabled>Select an option</option>
+            <input type="range" name="" id="" min={0} max={1500} onChange={(e) => setFilters(prevFilters=> ({...prevFilters, maxPrice:e.target.value}) )} />
+            <select name="" id="" onChange={(e)=> setFilters(prevFilters=> ({...prevFilters, category:e.target.value}))}>
+                <option value='all'>All categories</option>
                 {getCategories().map((c,idx)=>(
                     <option key={idx} value={c}>{c}</option>
                 ))}
