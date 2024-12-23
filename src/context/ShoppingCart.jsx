@@ -11,7 +11,6 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
 
   const addToCart = (product) => {
-    console.log(cart)
     const index = cart.findIndex((p) => p.id === product.id)
 
     if (index === -1) {
