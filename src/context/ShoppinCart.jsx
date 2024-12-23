@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { products } from '../mocks/products.json'
 
 export const ShoppingCart = createContext()
 
@@ -8,5 +9,5 @@ export const ShoppingCartProvider = ({ children }) => {
         category:'all'
       })
 
-    return <ShoppingCart.Provider value={{filters,setFilters}}>{children}</ShoppingCart.Provider>
+    return <ShoppingCart.Provider value={{filters,setFilters, products}}>{children}</ShoppingCart.Provider>
 }

@@ -1,4 +1,9 @@
-function Filters({products, setFilters}) {
+import { useContext } from "react"
+import { ShoppingCart } from "../context/ShoppinCart"
+
+function Filters() {
+    const {setFilters, products} = useContext(ShoppingCart)
+
     const getCategories = () => {
         const names = {}
         products.forEach(p=>{
