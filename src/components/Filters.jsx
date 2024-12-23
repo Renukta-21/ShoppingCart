@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ShoppingCart } from '../context/ShoppinCart'
+import { ShoppingCart } from '../context/ShoppingCart'
 import './filters.css'
 function Filters() {
   const { filters, setFilters, products } = useContext(ShoppingCart)

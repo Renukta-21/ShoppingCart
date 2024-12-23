@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { CartRemoveIcon , CartAddIcon} from '../assets/svg'
-import { ShoppingCart } from '../context/ShoppinCart'
+import { CartRemoveIcon, CartAddIcon } from '../assets/svg'
+import { ShoppingCart } from '../context/ShoppingCart'
 
 function ProductList() {
   const { filters, products, addToCart } = useContext(ShoppingCart)
@@ -23,7 +23,7 @@ function ProductList() {
                 {p.title} <strong>{p.price}</strong>{' '}
               </p>
               <strong>{p.category}</strong>
-              <button onClick={()=> addToCart(p)}>
+              <button onClick={() => addToCart(p)}>
                 <CartRemoveIcon />
               </button>
             </div>
