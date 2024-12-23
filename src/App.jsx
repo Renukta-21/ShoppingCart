@@ -16,10 +16,10 @@ function App() {
 
   const filteredProducts = products.filter(p=>{})
 
-  
+
   return (
     <div>
-      <Filters products={products}/>
+      <Filters products={products} setFilters={setFilters}/>
       <div className='appContainer'>
         <h1>Shopping Cart 🛍  </h1>
         <div className='productsContainer'>
@@ -34,7 +34,7 @@ function App() {
             </div>
           ))}
         </div>
-        <Debugger/>
+        <Debugger filters={filters}/>
       </div>
     </div>
   )

@@ -1,9 +1,11 @@
-import React from 'react'
+import './debugger.css'
 
-function Debugger() {
+function Debugger({filters}) {
   return (
     <footer>
-        {}
+            <div>
+                {JSON.stringify(filters, null, 2)}
+            </div>
     </footer>
   )
 }

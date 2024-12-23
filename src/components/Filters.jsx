@@ -1,8 +1,4 @@
-import { useState } from 'react'
-
-function Filters({products}) {
-    const [value, setValue] = useState('default')
-    
+function Filters({products, setFilters}) {
     const getCategories = () => {
         const names = {}
         products.forEach(p=>{
@@ -15,8 +11,8 @@ function Filters({products}) {
 
     return (
         <div>
-            <input type="range" name="" id="" min={0} max={1500} onChange={(e) => console.log(e.target.value)} />
-            <select name="" id="" defaultValue={value||'default'} onChange={(e)=> setValue(e.target.value)}>
+            <input type="range" name="" id="" min={0} max={1500} onChange={(e) => setFilters(prevFilters=> ({...prevFilters, minPrice:e.target.value}) )} />
+            <select name="" id="" defaultValue={'default'} onChange={(e)=> setFilters(prevFilters=> ({...prevFilters, category:e.target.value}))}>
                 <option value='default' disabled>Select an option</option>
                 {getCategories().map((c,idx)=>(
                     <option key={idx} value={c}>{c}</option>
