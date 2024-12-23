@@ -1,6 +1,10 @@
+import { useContext } from 'react'
 import './debugger.css'
+import { ShoppingCart } from '../context/ShoppingCart'
 
-function Debugger({filters}) {
+function Debugger() {
+  const {filters} = useContext(ShoppingCart)
+
   return (
     <footer>
             <div>
