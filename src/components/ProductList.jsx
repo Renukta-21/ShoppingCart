@@ -14,7 +14,7 @@ function ProductList() {
 
   return (
     <>
-      <h1>Shopping Cart 🛍 </h1>
+      
       <div className="productsContainer">
         {filteredProducts.slice(0, 20).map((p) => (
           <div className="product" key={p.id}>

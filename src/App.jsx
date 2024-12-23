@@ -7,6 +7,7 @@ function App() {
 
   return (
     <div className='appContainer'>
+      <h1>Shopping Cart 🛍 </h1>
       <Filters/>
       <ProductList/>
       <Debugger />
