@@ -1,0 +1,9 @@
+.cartMenu{
+    position: fixed;
+    min-height: 100vh ;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background-color: rgb(70, 69, 69);
+    padding: 10px 30px;
+}

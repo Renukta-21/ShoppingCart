@@ -3,6 +3,7 @@
 }
 .appContainer{
     padding: 0px 20px 50px 20px;
+    position: relative;
 }
 .productsContainer{
     width: 100%;
