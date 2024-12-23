@@ -15,7 +15,10 @@ function App() {
   }
 
   const filteredProducts = products.filter(p=>{
-    return filters.category === 'all' || p.category === filters.category
+    return p.price >= filters.maxPrice && 
+    (
+      filters.category==='all' || p.category === filters.category
+    )
   })
 
 
@@ -27,7 +30,7 @@ function App() {
         <div className='productsContainer'>
           {filteredProducts.slice(0, 20).map(p => (
             <div className='product' key={p.id}>
-              <img src={p.images[0]} alt="" />
+              <img alt="" />
               <div>
                 <p>{p.title} <strong>{p.price}</strong> </p>
                 <strong>{p.category}</strong>
