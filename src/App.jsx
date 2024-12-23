@@ -1,18 +1,15 @@
 import { products } from './mocks/products.json'
 import './app.css'
-import { CartRemoveIcon } from './assets/svg'
 import Filters from './components/Filters'
 import { useState } from 'react'
 import Debugger from './components/Debugger'
+import ProductList from './components/ProductList'
 
 function App() {
   const [filters, setFilters] = useState({
     maxPrice:0,
     category:'all'
   })
-  const handleClick = () => {
-
-  }
 
   const filteredProducts = products.filter(p=>{
     return p.price >= filters.maxPrice && 
@@ -23,24 +20,10 @@ function App() {
 
 
   return (
-    <div>
+    <div className='appContainer'>
       <Filters products={products} setFilters={setFilters}/>
-      <div className='appContainer'>
-        <h1>Shopping Cart 🛍  </h1>
-        <div className='productsContainer'>
-          {filteredProducts.slice(0, 20).map(p => (
-            <div className='product' key={p.id}>
-              <img alt="" />
-              <div>
-                <p>{p.title} <strong>{p.price}</strong> </p>
-                <strong>{p.category}</strong>
-                <button onClick={handleClick}><CartRemoveIcon /></button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <Debugger filters={filters}/>
-      </div>
+      <ProductList filteredProducts={filteredProducts}/>
+      <Debugger filters={filters}/>
     </div>
   )
 }
