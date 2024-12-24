@@ -18,10 +18,12 @@ export const ShoppingCartProvider = ({ children }) => {
   const removeOneFromCart = (product) => {
     dispatch({type:'REMOVE_ONE_FROM_CART', payload:product})
   }
-
+  const clearCart = ()=>{
+    dispatch({type:'CLEAR_CART'})
+  }
   return (
     <ShoppingCart.Provider
-      value={{ state, filters, setFilters, addToCart, removeFromCart, removeOneFromCart }}
+      value={{ state, filters, setFilters, addToCart, removeFromCart, removeOneFromCart, clearCart }}
     >
       {children}
     </ShoppingCart.Provider>

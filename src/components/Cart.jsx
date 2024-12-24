@@ -4,7 +4,7 @@ import { ShoppingCart } from '../context/ShoppingCart'
 import { ShoppingCartIcon } from '../assets/svg'
 
 function Cart() {
-  const { state, addToCart, removeOneFromCart } = useContext(ShoppingCart)
+  const { state, addToCart, removeOneFromCart, clearCart } = useContext(ShoppingCart)
   const {cart } = state
 
   return (
@@ -33,6 +33,7 @@ function Cart() {
         ) : (
           <p>No products added yet to the cart! 🛍 </p>
         )}
+        <button onClick={()=> clearCart()}>CLEAR</button>
       </aside>
     </div>
   )

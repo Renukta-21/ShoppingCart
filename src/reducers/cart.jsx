@@ -44,6 +44,13 @@ export const cartReducer = (state, action) => {
           cart:updatedCart
         } 
       }
+
+      case 'CLEAR_CART':{
+        return {
+          ...state,
+          cart:[]
+        }
+      }
     }
   }
   export const cartInitialState = {
