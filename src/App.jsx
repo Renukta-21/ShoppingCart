@@ -6,7 +6,7 @@ import Cart from './components/Cart'
 import { IS_DEVELOPMENT } from './config'
 
 function App() {
-
+  
   return (
     <div className='appContainer'>
       <h1>Shopping Cart 🛍 </h1>

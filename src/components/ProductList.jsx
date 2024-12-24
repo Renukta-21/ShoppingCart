@@ -3,8 +3,10 @@ import { CartRemoveIcon, CartAddIcon } from '../assets/svg'
 import { ShoppingCart } from '../context/ShoppingCart'
 
 function ProductList() {
-  const { filters, products, addToCart, removeFromCart, cart } = useContext(ShoppingCart)
-
+  const { state, filters, addToCart, removeFromCart } = useContext(ShoppingCart)
+  const {products, cart} = state
+  
+  
   const filteredProducts = products.filter((p) => {
     return (
       p.price >= filters.maxPrice &&
@@ -19,7 +21,7 @@ function ProductList() {
           const productInCart = cart.some(product=> product.id === p.id)
           return(
             <div className="product" key={p.id}>
-            <img alt="" src={p.images[0]}/>
+            <img alt="" />
             <div>
               <p>
                 {p.title} <strong>{p.price}</strong>{' '}

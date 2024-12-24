@@ -4,7 +4,8 @@ import { ShoppingCart } from '../context/ShoppingCart'
 import { ShoppingCartIcon } from '../assets/svg'
 
 function Cart() {
-  const { cart, addToCart, removeFromCart } = useContext(ShoppingCart)
+  const { state, addToCart, removeOneFromCart } = useContext(ShoppingCart)
+  const {cart } = state
 
   return (
     <div>
@@ -26,7 +27,7 @@ function Cart() {
               key={item.id}
               item={item}
               addToCart={() => addToCart(item)}
-              removeFromCart={() => removeFromCart(item)}
+              removeFromCart={() => removeOneFromCart(item)}
             />
           ))
         ) : (
@@ -40,7 +41,7 @@ function Cart() {
 const CartItem = ({ item, addToCart, removeFromCart }) => {
   return (
     <>
-    <hr />
+      <hr />
       <div key={item.id} className="cartItem">
         <p>{item.title}</p>
         <div>

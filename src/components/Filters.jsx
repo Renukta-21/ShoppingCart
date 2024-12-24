@@ -2,7 +2,8 @@ import { useContext } from 'react'
 import { ShoppingCart } from '../context/ShoppingCart'
 import './filters.css'
 function Filters() {
-  const { filters, setFilters, products } = useContext(ShoppingCart)
+  const { state, filters, setFilters } = useContext(ShoppingCart)
+  const { products } = state
 
   const getCategories = () => {
     const names = {}
