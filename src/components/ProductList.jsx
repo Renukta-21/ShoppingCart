@@ -21,7 +21,7 @@ function ProductList() {
           const productInCart = cart.some(product=> product.id === p.id)
           return(
             <div className="product" key={p.id}>
-            <img alt="" />
+            <img alt="" src={p.images[0]}/>
             <div>
               <p>
                 {p.title} <strong>{p.price}</strong>{' '}
