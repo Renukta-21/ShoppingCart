@@ -8,7 +8,9 @@ function Cart() {
 
   return (
     <div>
-      <label htmlFor="menuCheck" className='shoppingLabel'><ShoppingCartIcon/></label>
+      <label htmlFor="menuCheck" className="shoppingLabel">
+        <ShoppingCartIcon />
+      </label>
       <input
         type="checkbox"
         name=""
@@ -19,16 +21,7 @@ function Cart() {
 
       <aside className="cartMenu">
         {cart.length > 0 ? (
-          cart.map((c) => (
-            <div key={c.id}>
-              <p>{c.title}</p>
-              <div>
-                <button>+</button>
-                <p>{c.quantity}</p>
-                <button>+</button>
-              </div>
-            </div>
-          ))
+          cart.map((item) => <CartItem key={item.id} item={item} />)
         ) : (
           <p>No products added yet to the cart! 🛍 </p>
         )}
@@ -37,4 +30,16 @@ function Cart() {
   )
 }
 
+const CartItem = ({item}) => {
+  return (
+    <div key={item.id}>
+      <p>{item.title}</p>
+      <div>
+        <button>+</button>
+        <p>{item.quantity}</p>
+        <button>+</button>
+      </div>
+    </div>
+  )
+}
 export default Cart
