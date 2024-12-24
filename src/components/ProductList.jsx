@@ -3,7 +3,7 @@ import { CartRemoveIcon, CartAddIcon } from '../assets/svg'
 import { ShoppingCart } from '../context/ShoppingCart'
 
 function ProductList() {
-  const { filters, products, addToCart } = useContext(ShoppingCart)
+  const { filters, products, addToCart, cart } = useContext(ShoppingCart)
 
   const filteredProducts = products.filter((p) => {
     return (
@@ -15,8 +15,11 @@ function ProductList() {
   return (
     <>
       <div className="productsContainer">
-        {filteredProducts.slice(0, 20).map((p) => (
-          <div className="product" key={p.id}>
+        {filteredProducts.slice(0, 20).map((p) => {
+          const productInCart = cart.some(product=> product.id === p.id)
+          
+          return(
+            <div className="product" key={p.id}>
             <img alt="" />
             <div>
               <p>
@@ -24,11 +27,12 @@ function ProductList() {
               </p>
               <strong>{p.category}</strong>
               <button onClick={() => addToCart(p)}>
-                <CartRemoveIcon />
+                {productInCart ? <CartRemoveIcon/> : <CartAddIcon/>}
               </button>
             </div>
           </div>
-        ))}
+          )
+})}
       </div>
     </>
   )
