@@ -26,7 +26,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const removeFromCart = (product) => {
     const productIdx = cart.findIndex((c) => c.id === product.id)
-    console.log(productIdx)
+    
     if (productIdx.quantity === -1) {
       console.log('product not found in cart')
       return

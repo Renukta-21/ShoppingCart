@@ -21,7 +21,14 @@ function Cart() {
 
       <aside className="cartMenu">
         {cart.length > 0 ? (
-          cart.map((item) => <CartItem key={item.id} item={item} addToCart={()=> addToCart(item)} removeFromCart = {()=> removeFromCart(item)}/>)
+          cart.map((item) => (
+            <CartItem
+              key={item.id}
+              item={item}
+              addToCart={() => addToCart(item)}
+              removeFromCart={() => removeFromCart(item)}
+            />
+          ))
         ) : (
           <p>No products added yet to the cart! 🛍 </p>
         )}
@@ -30,16 +37,24 @@ function Cart() {
   )
 }
 
-const CartItem = ({item, addToCart, removeFromCart}) => {
+const CartItem = ({ item, addToCart, removeFromCart }) => {
   return (
-    <div key={item.id}>
-      <p>{item.title}</p>
-      <div>
-        <button onClick={removeFromCart} disabled = {item.quantity === 1}>-</button>
-        <p>{item.quantity}</p>
-        <button onClick={addToCart}>+</button>
+    <>
+    <hr />
+      <div key={item.id} className="cartItem">
+        <p>{item.title}</p>
+        <div>
+          <img src={item.images[0]} alt="" />
+          <div className="controlsContainer">
+            <button onClick={removeFromCart} disabled={item.quantity === 1}>
+              -
+            </button>
+            <p>{item.quantity}</p>
+            <button onClick={addToCart}>+</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default Cart
