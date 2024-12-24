@@ -1,18 +1,21 @@
 import { products } from '../mocks/products.json'
 
+const updateLocalStorage = (state)=>{
+  localStorage.setItem('cart', JSON.stringify(state))
+}
+
 export const cartReducer = (state, action) => {
     switch (action.type) {
       case 'ADD_TO_CART': {
         const index = state.cart.findIndex((p) => p.id === action.payload.id)
-        if (index === -1) {
-          return {
-            ...state,
-            cart: [...state.cart, {...action.payload, quantity:1}]
-          }
-        }
-  
         const updatedCart = [...state.cart]
-        updatedCart[index].quantity +=1
+
+        if (index === -1) {
+            updatedCart.push({...action.payload, quantity:1})
+          }else{
+            updatedCart[index].quantity +=1
+          }
+          updateLocalStorage(updatedCart)
         return {
           ...state,
           cart:updatedCart
@@ -28,6 +31,7 @@ export const cartReducer = (state, action) => {
         }else{
           updatedCart.splice(productIdx, 1)
         }
+        updateLocalStorage(updatedCart)
         return {
           ...state,
           cart:updatedCart
@@ -38,7 +42,7 @@ export const cartReducer = (state, action) => {
         const productIdx = state.cart.findIndex(p=> p.id === action.payload.id)
         const updatedCart = [...state.cart]
         updatedCart.splice(productIdx, 1)
-  
+        updateLocalStorage(updatedCart)
         return {
           ...state,
           cart:updatedCart
@@ -46,6 +50,7 @@ export const cartReducer = (state, action) => {
       }
 
       case 'CLEAR_CART':{
+        updateLocalStorage([])
         return {
           ...state,
           cart:[]
@@ -55,6 +60,6 @@ export const cartReducer = (state, action) => {
   }
   export const cartInitialState = {
     products,
-    cart: [],
+    cart: JSON.parse(window.localStorage.getItem('cart')) || [] ,
     filters: { maxPrice: 0, category: 'all' },
   }
