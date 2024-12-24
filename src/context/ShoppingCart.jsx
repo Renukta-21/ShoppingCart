@@ -24,8 +24,12 @@ export const ShoppingCartProvider = ({ children }) => {
     })
   }
 
+  const removeFromCart = (product)=>{
+    setCart(prevCart => prevCart.filter(i=> i.id !== product.id))
+  }
+
   return (
-    <ShoppingCart.Provider value={{ filters, setFilters, products, cart, addToCart }}>
+    <ShoppingCart.Provider value={{ filters, setFilters, products, cart, addToCart, removeFromCart }}>
       {children}
     </ShoppingCart.Provider>
   )
