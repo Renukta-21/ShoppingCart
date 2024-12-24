@@ -24,12 +24,28 @@ export const ShoppingCartProvider = ({ children }) => {
     })
   }
 
-  const removeFromCart = (product)=>{
-    setCart(prevCart => prevCart.filter(i=> i.id !== product.id))
+  const removeFromCart = (product) => {
+    const productIdx = cart.findIndex((c) => c.id === product.id)
+    console.log(productIdx)
+    if (productIdx.quantity === -1) {
+      console.log('product not found in cart')
+      return
+    }
+    const updatedCart = [...cart]
+    const productInCart = updatedCart[productIdx]
+
+    if(productInCart.quantity >1){
+      productInCart.quantity -=1
+    }else{
+      updatedCart.splice(productIdx, 1)
+    }
+    setCart(updatedCart)
   }
 
   return (
-    <ShoppingCart.Provider value={{ filters, setFilters, products, cart, addToCart, removeFromCart }}>
+    <ShoppingCart.Provider
+      value={{ filters, setFilters, products, cart, addToCart, removeFromCart }}
+    >
       {children}
     </ShoppingCart.Provider>
   )

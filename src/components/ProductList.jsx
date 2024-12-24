@@ -25,7 +25,9 @@ function ProductList() {
                 {p.title} <strong>{p.price}</strong>{' '}
               </p>
               <strong>{p.category}</strong>
-              <button onClick={()=> productInCart ? removeFromCart(p) : addToCart(p)}>
+              <button
+              className={`${productInCart && 'removeClass'}`} 
+              onClick={()=> productInCart ? removeFromCart(p) : addToCart(p)}>
                 {productInCart ? <CartRemoveIcon/> : <CartAddIcon/>}
               </button>
             </div>
